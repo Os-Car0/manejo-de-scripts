@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-22T08:31:06.946Z",
+  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "artifact": "dist/manejo-de-scripts-bc738d5b80994a2ac98b6db36f83b8a14953df4e.tar.gz",
+  "sha256": "646355cf8ef8bc4937a5b222c9549c7cd5e7766b309763c2e9e1abb73e0441c6",
+  "files": [
+    "src",
+    "public",
+    "scripts",
+    "package.json",
+    "package-lock.json",
+    "Dockerfile",
+    ".dockerignore",
+    "render.yaml",
+    ".env.example",
+    "README.md"
+  ],
+  "note": "Código fuente de liberación; Render construye el mismo commit desde Git. No es una imagen Docker."
+}

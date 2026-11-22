@@ -4,8 +4,9 @@ node_modules/
 !.env.example
 data/
 dist/
-coverage/
+/coverage/
 tmp/
 *.log
+!evidence/*.log
 evidence/ui-session.json
 evidence/document-qa/

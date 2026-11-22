@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-11-22T08:31:09.647Z",
+  "status": "ok",
+  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "attempts": 4,
+  "health": {
+    "status": "ok",
+    "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+    "storage": "ok",
+    "uptimeSeconds": 0.3600137,
+    "timestamp": "2026-11-22T08:31:09.626Z"
+  },
+  "scope": "Servidor temporal real del equipo local; no es un despliegue en Render.",
+  "rejectedDifferentCommit": true,
+  "stderr": []
+}

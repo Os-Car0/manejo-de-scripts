@@ -1,0 +1,5 @@
+{
+  "timestamp": "2026-11-22T08:31:07.960Z",
+  "status": "PENDIENTE",
+  "reason": "Docker no está instalado o no se encuentra en PATH."
+}

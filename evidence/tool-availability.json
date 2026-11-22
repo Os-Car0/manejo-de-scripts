@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-11-22T08:30:56.811Z",
+  "node": "v26.13.0",
+  "npm": "11.20.0",
+  "git": "git version 2.55.0.windows.3",
+  "docker": "NO DISPONIBLE",
+  "platform": "win32",
+  "architecture": "x64",
+  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "shellNote": "PowerShell bloquea npm.ps1 en este equipo; se utiliza npm.cmd sin cambiar políticas.",
+  "runnerNote": "El ejecutor restringido tuvo setup refresh had errors; validaciones continuadas con autorizaciones de ejecución del entorno."
+}

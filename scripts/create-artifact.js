@@ -1,17 +1,21 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const { spawnSync } = require('node:child_process');
 const tar = require('tar');
 const { cli, root, commit, evidence } = require('./lib');
 cli(async () => {
   const version = commit();
   const allowed = ['src', 'public', 'scripts', 'package.json', 'package-lock.json', 'Dockerfile', '.dockerignore', 'render.yaml', '.env.example', 'README.md'];
   for (const file of allowed) if (!fs.existsSync(path.join(root, file))) throw new Error(`No se puede empaquetar: falta ${file}.`);
+  const gitOptions = ['-c', `safe.directory=${root.replaceAll('\\', '/')}`];
+  const status = spawnSync('git', [...gitOptions, 'status', '--porcelain', '--', ...allowed], { cwd: root, encoding: 'utf8', windowsHide: true });
+  if (status.status !== 0 || status.stdout.trim() || version === 'local') throw new Error('El código de liberación debe estar guardado en un commit local y sin cambios pendientes antes de empaquetar.');
   fs.mkdirSync('dist', { recursive: true });
   const archive = `dist/manejo-de-scripts-${version}.tar.gz`;
   await tar.c({ gzip: true, file: archive, cwd: root, portable: true }, allowed);
   const digest = crypto.createHash('sha256').update(fs.readFileSync(archive)).digest('hex');
-  const manifest = { timestamp: new Date().toISOString(), commit: version, artifact: archive, sha256: digest, files: allowed, note: 'Código fuente de liberación; Render construye el mismo commit desde Git. No es una imagen Docker.' };
+  const manifest = { timestamp: new Date().toISOString(), commit: version, sourceClean: true, artifact: archive, sha256: digest, files: allowed, note: 'Código fuente de liberación; Render construye el mismo commit desde Git. No es una imagen Docker.' };
   fs.writeFileSync('dist/manifest.json', JSON.stringify(manifest, null, 2) + '\n');
   evidence('artifact.json', manifest);
   console.log(`Artefacto generado: ${archive}; SHA-256 ${digest}`);

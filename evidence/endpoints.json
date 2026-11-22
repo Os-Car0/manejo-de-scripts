@@ -1,0 +1,149 @@
+{
+  "timestamp": "2026-11-22T08:31:10.518Z",
+  "origin": "http://localhost:3000",
+  "results": [
+    {
+      "route": "/health",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "commit": "local",
+        "storage": "ok",
+        "uptimeSeconds": 617.7003902,
+        "timestamp": "2026-11-22T08:31:10.425Z"
+      }
+    },
+    {
+      "route": "/api/tasks",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "data": {
+          "id": "946805ae-cea8-48c7-9306-751d8a702198",
+          "title": "Evidencia temporal de ejecución",
+          "description": "Esta tarea se elimina al terminar la verificación.",
+          "completed": false,
+          "createdAt": "2026-11-22T08:31:10.477Z",
+          "updatedAt": "2026-11-22T08:31:10.477Z"
+        },
+        "message": "Tarea creada."
+      }
+    },
+    {
+      "route": "/api/tasks/946805ae-cea8-48c7-9306-751d8a702198",
+      "method": "PATCH",
+      "status": 200,
+      "body": {
+        "data": {
+          "id": "946805ae-cea8-48c7-9306-751d8a702198",
+          "title": "Evidencia actualizada",
+          "description": "Esta tarea se elimina al terminar la verificación.",
+          "completed": true,
+          "createdAt": "2026-11-22T08:31:10.477Z",
+          "updatedAt": "2026-11-22T08:31:10.489Z"
+        },
+        "message": "Tarea actualizada."
+      }
+    },
+    {
+      "route": "/api/tasks",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "data": [
+          {
+            "id": "946805ae-cea8-48c7-9306-751d8a702198",
+            "title": "Evidencia actualizada",
+            "description": "Esta tarea se elimina al terminar la verificación.",
+            "completed": true,
+            "createdAt": "2026-11-22T08:31:10.477Z",
+            "updatedAt": "2026-11-22T08:31:10.489Z"
+          }
+        ]
+      }
+    },
+    {
+      "route": "/api/tasks",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "El título debe tener entre 3 y 120 caracteres."
+      }
+    },
+    {
+      "route": "/ruta-ausente",
+      "method": "GET",
+      "status": 404,
+      "body": {
+        "error": "Recurso no encontrado."
+      }
+    },
+    {
+      "route": "/api/tasks/946805ae-cea8-48c7-9306-751d8a702198",
+      "method": "DELETE",
+      "status": 204,
+      "body": null
+    },
+    {
+      "route": "/health",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "commit": "local",
+        "storage": "ok",
+        "uptimeSeconds": 617.7853324,
+        "timestamp": "2026-11-22T08:31:10.510Z"
+      }
+    },
+    {
+      "route": "/metrics",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "timestamp": "2026-11-22T08:31:10.515Z",
+        "commit": "local",
+        "scope": "Proceso actual; contadores desde el inicio; p95 sobre las últimas 1000 respuestas finalizadas.",
+        "requests": {
+          "total": 8,
+          "byStatus": {
+            "200": 4,
+            "201": 1,
+            "204": 1,
+            "400": 1,
+            "404": 1
+          }
+        },
+        "responseTimeMs": {
+          "average": 6.84365,
+          "p95": 27.5017,
+          "sampleSize": 8
+        },
+        "errors": {
+          "http4xx": 2,
+          "http5xx": 0,
+          "total": 2,
+          "percentage": 25,
+          "serverPercentage": 0
+        },
+        "api": {
+          "requests": 5,
+          "http5xx": 0,
+          "serverErrorPercentage": 0,
+          "p95Ms": 27.5017,
+          "sampleSize": 5
+        },
+        "uptimeSeconds": 617.7905764,
+        "health": "ok",
+        "memoryBytes": {
+          "rss": 44658688,
+          "heapTotal": 11145216,
+          "heapUsed": 9061200,
+          "external": 2878356,
+          "arrayBuffers": 146319
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+Validación local iniciada: 2026-11-22T08:21:53.137Z
+
+### Instalación reproducible
+
+> manejo-de-scripts@1.0.0 deps:ci
+> node scripts/install-deps.js
+
+[ejecutar] node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js ci --ignore-scripts --no-fund
+
+added 414 packages, and audited 415 packages in 45s
+
+found 0 vulnerabilities
+Dependencias instaladas desde package-lock.json mediante npm ci.
+
+Salida: 0
+
+### Preparación
+
+> manejo-de-scripts@1.0.0 release:prepare
+> node scripts/prepare-release.js
+
+Entorno de liberación preparado. No se alteraron los datos de la aplicación.
+
+Salida: 0
+
+### Configuración
+
+> manejo-de-scripts@1.0.0 config:validate
+> node --env-file-if-exists=.env scripts/validate-env.js
+
+Configuración válida: NODE_ENV=development, PORT=3000, versión=local. Valores secretos omitidos.
+.env not found. Continuing without it.
+
+Salida: 0
+
+### ESLint
+
+> manejo-de-scripts@1.0.0 lint
+> eslint . --format json --output-file evidence/eslint.json
+
+
+Salida: 1

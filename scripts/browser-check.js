@@ -1,5 +1,5 @@
 const fs = require('node:fs');
-const path = require('node:path');
+/* global document, window -- El callback de page.evaluate se ejecuta en Chrome. */
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
 const { cli, evidence } = require('./lib');
@@ -77,8 +77,10 @@ cli(async () => {
     await page.unroute('**/api/tasks');
     await page.getByRole('button', { name: 'Cancelar', exact: true }).click();
     checks.push('Mostrar error HTTP controlado en prueba de navegador; no es una caída real del servidor.');
+    await page.locator('#toast').waitFor({ state: 'hidden' });
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.screenshot({ path: 'evidence/screenshots/aplicacion-movil.png', fullPage: true });
+    await page.screenshot({ path: 'evidence/screenshots/aplicacion-movil.png', fullPage: false });
+    await page.screenshot({ path: 'evidence/screenshots/aplicacion-movil-completa.png', fullPage: true });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
     checks.push('Vista móvil de 390 px sin desbordamiento horizontal.');
     await page.getByRole('button', { name: 'Eliminar Documentar las métricas de la aplicación', exact: true }).click();
@@ -89,7 +91,7 @@ cli(async () => {
     await page.getByRole('heading', { name: 'Documentar las métricas de la aplicación', exact: true }).waitFor({ state: 'hidden' });
     checks.push('Cancelar eliminación y después confirmar eliminación real.');
     assert.deepEqual(errors, []);
-    evidence('browser-check.json', { timestamp: new Date().toISOString(), status: 'correcto', browser: await browser.version(), checks, consoleErrors: errors, screenshots: ['aplicacion-escritorio.png', 'aplicacion-movil.png', 'validacion-formulario.png'], note: 'Capturas reales de tareas creadas durante la prueba; los datos se eliminan al finalizar. Un error HTTP se intercepta deliberadamente para verificar la presentación del mensaje.' });
+    evidence('browser-check.json', { timestamp: new Date().toISOString(), status: 'correcto', browser: await browser.version(), checks, consoleErrors: errors, screenshots: ['aplicacion-escritorio.png', 'aplicacion-movil.png', 'aplicacion-movil-completa.png', 'validacion-formulario.png'], note: 'Capturas reales de tareas creadas durante la prueba; los datos se eliminan al finalizar. Un error HTTP se intercepta deliberadamente para verificar la presentación del mensaje.' });
     console.log(`Interfaz verificada: ${checks.length} comprobaciones; capturas reales guardadas.`);
   } finally {
     for (const id of createdIds) await context.request.delete(`${origin}/api/tasks/${id}`);

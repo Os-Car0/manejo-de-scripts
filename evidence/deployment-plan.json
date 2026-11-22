@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-11-22T08:31:07.478Z",
+  "provider": "Render",
+  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "branch": "main",
+  "mechanism": "Deploy hook HTTPS con ref igual al SHA validado",
+  "steps": [
+    "Validar configuración",
+    "Solicitar despliegue del SHA",
+    "Confirmar /health con el mismo SHA"
+  ],
+  "executed": false
+}

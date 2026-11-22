@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-11-22T08:31:11.257Z",
+  "scope": "Ensayo local breve; no demuestra disponibilidad mensual ni rendimiento de Render.",
+  "origin": "http://localhost:3000",
+  "node": "v26.13.0",
+  "platform": "win32",
+  "concurrency": 5,
+  "warmupRequests": 10,
+  "measuredRequests": 200,
+  "completed": 200,
+  "networkFailures": 0,
+  "statuses": {
+    "200": 200
+  },
+  "p95Ms": 7.100099999999998,
+  "elapsedMs": 170.89030000000002,
+  "requestsPerSecond": 1170.3414412637812,
+  "http5xxPercentage": 0,
+  "objectivesMetInThisSample": true
+}

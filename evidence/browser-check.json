@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-11-22T08:31:16.819Z",
+  "status": "correcto",
+  "browser": "157.0.8103.79",
+  "checks": [
+    "Crear tarea desde el formulario y confirmar respuesta de la API.",
+    "Editar y guardar el título.",
+    "Completar una tarea y actualizar contadores.",
+    "Conservar el estado al recargar la página.",
+    "Filtros de completadas y pendientes; búsqueda por texto.",
+    "Rechazar título de solo espacios con mensaje visible.",
+    "Mostrar error HTTP controlado en prueba de navegador; no es una caída real del servidor.",
+    "Vista móvil de 390 px sin desbordamiento horizontal.",
+    "Cancelar eliminación y después confirmar eliminación real."
+  ],
+  "consoleErrors": [],
+  "screenshots": [
+    "aplicacion-escritorio.png",
+    "aplicacion-movil.png",
+    "validacion-formulario.png"
+  ],
+  "note": "Capturas reales de tareas creadas durante la prueba; los datos se eliminan al finalizar. Un error HTTP se intercepta deliberadamente para verificar la presentación del mensaje."
+}

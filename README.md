@@ -81,9 +81,15 @@ Ejecutar todos mediante `npm.cmd run <comando>` en Windows o `npm run <comando>`
 | security:check | scripts/check-secrets.js | Busca patrones de secretos sin imprimir valores |
 | smoke | scripts/smoke.js | CRUD real local y captura respuestas; elimina su propia tarea |
 | load:test | scripts/load-test.js | 200 GET locales, 5 clientes, 10 solicitudes de calentamiento |
+| test:ui | scripts/browser-check.js | CRUD y mensajes en Chrome local; capturas reales de escritorio y móvil |
+| test:health-local | scripts/verify-version-local.js | Servidor temporal real: acepta el SHA correcto y rechaza otro |
+| evidence:environment | scripts/capture-environment.js | Versiones, disponibilidad de herramientas y estado Git sin secretos |
+| validate:local | scripts/validate-local.js | Orquesta la validación local y conserva log y códigos esperados |
 | verify | package.json | Configuración, lint, pruebas, build, YAML y revisión de secretos |
 
 `scripts/lib.js` centraliza errores y ejecución sin concatenación de comandos de shell. Los scripts de despliegue no imprimen el hook. Las pruebas del verificador emplean respuestas controladas para comprobar el rechazo de versiones antiguas; no constituyen evidencia de un despliegue real. La auditoría usa overrides explícitos de glob y minimatch para resolver avisos transitivos; la compatibilidad se comprueba con toda la suite.
+
+El empaquetado exige que los archivos de código estén guardados en Git y sin modificaciones pendientes; no etiqueta fuentes modificadas con el SHA de una versión anterior. `dist/manifest.json` registra el commit de origen y el hash del paquete. Los commits posteriores de evidencias y documentos pueden ser diferentes de ese commit de implementación.
 
 ## Verificación y evidencia
 
@@ -97,6 +103,10 @@ npm.cmd run load:test
 ```
 
 Jest exige 80 % en líneas, funciones, ramas y sentencias para **todos los módulos src**, incluido el punto de entrada. El frontend se verifica mediante interacción real de navegador; esa comprobación es distinta de la cobertura de Jest. Tests y scripts usan datos temporales. `evidence/` conserva resultados reales, cobertura HTML/LCOV/JSON, lint y monitoreo; `docs/` contiene entrega académica y matriz. Los resultados concretos se registran en `docs/informe-final.md` y no deben sustituirse por objetivos.
+
+`test:ui` usa Playwright con Chrome instalado; en Windows su ruta predeterminada es `C:/Program Files/Google/Chrome/Application/chrome.exe`, configurable mediante CHROME_PATH. Exige una instancia local sin tareas para aislar la evidencia; elimina exclusivamente las tareas creadas por la prueba. La comprobación de un error HTTP de interfaz utiliza una respuesta interceptada declarada en el reporte; el CRUD restante se ejecuta contra la API real. No se descarga un navegador durante npm ci.
+
+Para regenerar la entrega, `scripts/create-academic-document.py` lee las evidencias y crea el Word, informe y matriz con python-docx y Pillow. `scripts/export-document.ps1` actualiza el índice y exporta con Word de Windows. `scripts/verify-documents.py` revisa estructura, formato y PDF, y produce PNG para inspección visual. En esta sesión se utiliza el Python incluido en el runtime de documentos de Codex; estos pasos documentales requieren sus dependencias y no forman parte del despliegue web. El renderizador de LibreOffice se intenta y su limitación de disponibilidad se registra; no se afirma una revisión de imágenes sin abrirlas.
 
 ## Pipeline CI/CD
 

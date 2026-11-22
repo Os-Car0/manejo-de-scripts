@@ -15,7 +15,7 @@ function npm(args) {
   run(process.execPath, [cli, ...args]);
 }
 function commit() {
-  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
+  if (process.env.GITHUB_SHA) return sha(process.env.GITHUB_SHA);
   const result = spawnSync('git', ['-c', `safe.directory=${root.replaceAll('\\', '/')}`, 'rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', windowsHide: true });
   return result.status === 0 ? result.stdout.trim() : 'local';
 }

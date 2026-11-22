@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-11-22T08:31:17.744Z",
+  "summary": [
+    {
+      "name": "Disponibilidad de herramientas",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Preparación",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Configuración",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "ESLint",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Pruebas y cobertura",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Construcción",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "YAML",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Artefacto",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Plan de despliegue sin ejecución",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Construcción Docker o limitación explícita",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true
+    },
+    {
+      "name": "Despliegue fuera de Actions: rechazo esperado",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true
+    },
+    {
+      "name": "Health check real de commit local",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Smoke HTTP local",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Carga local breve",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Interfaz de navegador",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "Revisión local de secretos",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true
+    }
+  ]
+}

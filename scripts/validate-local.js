@@ -5,6 +5,7 @@ const { cli, evidence, root } = require('./lib');
 cli(() => {
   fs.mkdirSync('evidence', { recursive: true });
   const log = 'evidence/local-validation.log';
+  if (fs.existsSync(log)) fs.copyFileSync(log, `evidence/validation-attempt-${Date.now()}.log`);
   fs.writeFileSync(log, `Validación local iniciada: ${new Date().toISOString()}\n`);
   const summary = [];
   const npmCli = process.env.npm_execpath;
@@ -18,7 +19,8 @@ cli(() => {
     evidence('local-validation.json', { timestamp: new Date().toISOString(), summary });
     if (result.error || result.status !== expected) throw new Error(`Falló ${name}. Consulta ${path.join(root, log)}.`);
   }
-  step('Instalación reproducible', ['run', 'deps:ci']);
+  if (!process.argv.includes('--skip-install')) step('Instalación reproducible', ['run', 'deps:ci']);
+  step('Disponibilidad de herramientas', ['run', 'evidence:environment']);
   step('Preparación', ['run', 'release:prepare']);
   step('Configuración', ['run', 'config:validate']);
   step('ESLint', ['run', 'lint', '--', '--format', 'json', '--output-file', 'evidence/eslint.json']);
@@ -30,6 +32,7 @@ cli(() => {
   const docker = spawnSync('docker', ['info'], { encoding: 'utf8', windowsHide: true });
   step('Construcción Docker o limitación explícita', ['run', 'docker:build'], docker.status === 0 ? 0 : 1);
   step('Despliegue fuera de Actions: rechazo esperado', ['run', 'deploy:render'], 1);
+  step('Health check real de commit local', ['run', 'test:health-local']);
   step('Smoke HTTP local', ['run', 'smoke']);
   step('Carga local breve', ['run', 'load:test']);
   step('Interfaz de navegador', ['run', 'test:ui']);
