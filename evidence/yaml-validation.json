@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-11-22T08:15:45.510Z",
+  "status": "correcto",
+  "files": [
+    "render.yaml",
+    ".github/workflows/ci-cd.yml"
+  ],
+  "scope": "Parseo YAML, claves únicas y controles básicos; no sustituye ejecución en GitHub ni validación del proveedor."
+}

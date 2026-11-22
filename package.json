@@ -1,0 +1,39 @@
+{
+  "name": "manejo-de-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de Gestión de Tareas y pipeline académico de liberación continua",
+  "main": "src/server.js",
+  "engines": { "node": ">=24 <27", "npm": ">=10" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "lint": "eslint .",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --runInBand --coverage",
+    "release:prepare": "node scripts/prepare-release.js",
+    "deps:ci": "node scripts/install-deps.js",
+    "config:validate": "node --env-file-if-exists=.env scripts/validate-env.js",
+    "test:release": "node scripts/test-release.js",
+    "build": "node scripts/build.js",
+    "release:artifact": "node scripts/create-artifact.js",
+    "docker:build": "node scripts/build-docker.js",
+    "deploy:plan": "node scripts/deploy.js --plan",
+    "deploy:render": "node scripts/deploy.js --execute",
+    "health:check": "node scripts/health-check.js",
+    "yaml:validate": "node scripts/validate-yaml.js",
+    "security:check": "node scripts/check-secrets.js",
+    "smoke": "node scripts/smoke.js",
+    "load:test": "node scripts/load-test.js",
+    "test:ui": "node scripts/browser-check.js",
+    "validate:local": "node scripts/validate-local.js",
+    "verify": "npm run config:validate && npm run lint && npm run test:release && npm run build && npm run yaml:validate && npm run security:check"
+  },
+  "dependencies": { "express": "^5.1.0", "helmet": "^8.1.0" },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1", "eslint": "^10.15.0", "globals": "^17.14.0",
+    "jest": "^30.2.0", "supertest": "^7.1.4", "tar": "^7.5.2", "yaml": "^2.8.1", "playwright": "^1.56.1"
+  },
+  "overrides": { "glob": "^14.0.2", "minimatch": "^11.0.1" },
+  "license": "UNLICENSED"
+}

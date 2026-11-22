@@ -1,0 +1,100 @@
+name: Validación y despliegue de tareas
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: tareas-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    name: Validar y construir
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_ENV: test
+      APP_COMMIT: ${{ github.sha }}
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js 24 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Instalar dependencias reproducibles
+        run: npm ci --ignore-scripts --no-fund
+      - name: Preparar entorno de liberación
+        run: npm run release:prepare
+      - name: Validar configuración
+        run: npm run config:validate
+      - name: Analizar código con ESLint
+        run: npm run lint -- --format json --output-file evidence/eslint.json
+      - name: Ejecutar pruebas y exigir cobertura mínima
+        run: npm run test:release
+      - name: Validar construcción y YAML
+        run: |
+          npm run build
+          npm run yaml:validate
+          npm run security:check
+      - name: Preparar artefacto de liberación
+        run: npm run release:artifact
+      - name: Construir imagen Docker del commit validado
+        run: npm run docker:build
+      - name: Conservar reportes y artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: liberacion-${{ github.sha }}
+          path: |
+            evidence/
+            dist/
+            coverage/
+          retention-days: 14
+  deploy:
+    name: Desplegar y verificar en Render
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.RENDER_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    env:
+      RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      DEPLOY_BASE_URL: ${{ secrets.DEPLOY_BASE_URL }}
+      EXPECTED_COMMIT: ${{ github.sha }}
+      APP_COMMIT: ${{ github.sha }}
+    steps:
+      - name: Descargar el commit validado
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Instalar dependencias desde lockfile
+        run: npm ci --ignore-scripts --no-fund
+      - name: Recuperar artefacto validado
+        uses: actions/download-artifact@v4
+        with:
+          name: liberacion-${{ github.sha }}
+          path: .
+      - name: Validar configuración de despliegue
+        run: npm run config:validate -- --deploy
+      - name: Generar plan del commit validado
+        run: npm run deploy:plan
+      - name: Solicitar despliegue en Render
+        run: npm run deploy:render
+      - name: Comprobar salud y versión publicada
+        run: npm run health:check
+      - name: Conservar evidencia del despliegue
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: despliegue-${{ github.sha }}
+          path: |
+            evidence/deployment*.json
+            evidence/post-deploy-health.json
+          retention-days: 14

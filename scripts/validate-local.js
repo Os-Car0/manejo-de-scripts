@@ -1,0 +1,41 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const { spawnSync } = require('node:child_process');
+const { cli, evidence, root } = require('./lib');
+cli(() => {
+  fs.mkdirSync('evidence', { recursive: true });
+  const log = 'evidence/local-validation.log';
+  fs.writeFileSync(log, `Validación local iniciada: ${new Date().toISOString()}\n`);
+  const summary = [];
+  const npmCli = process.env.npm_execpath;
+  function step(name, args, expected = 0) {
+    console.log(`Validando ${name}…`);
+    const result = spawnSync(process.execPath, [npmCli, ...args], { cwd: root, encoding: 'utf8', env: process.env, windowsHide: true, maxBuffer: 10 * 1024 * 1024 });
+    const output = `${result.stdout || ''}${result.stderr || ''}`;
+    fs.appendFileSync(log, `\n### ${name}\n${output}\nSalida: ${result.status}\n`);
+    console.log(output);
+    summary.push({ name, exitCode: result.status, expectedExitCode: expected, passed: result.status === expected });
+    evidence('local-validation.json', { timestamp: new Date().toISOString(), summary });
+    if (result.error || result.status !== expected) throw new Error(`Falló ${name}. Consulta ${path.join(root, log)}.`);
+  }
+  step('Instalación reproducible', ['run', 'deps:ci']);
+  step('Preparación', ['run', 'release:prepare']);
+  step('Configuración', ['run', 'config:validate']);
+  step('ESLint', ['run', 'lint', '--', '--format', 'json', '--output-file', 'evidence/eslint.json']);
+  step('Pruebas y cobertura', ['run', 'test:release']);
+  step('Construcción', ['run', 'build']);
+  step('YAML', ['run', 'yaml:validate']);
+  step('Artefacto', ['run', 'release:artifact']);
+  step('Plan de despliegue sin ejecución', ['run', 'deploy:plan']);
+  const docker = spawnSync('docker', ['info'], { encoding: 'utf8', windowsHide: true });
+  step('Construcción Docker o limitación explícita', ['run', 'docker:build'], docker.status === 0 ? 0 : 1);
+  step('Despliegue fuera de Actions: rechazo esperado', ['run', 'deploy:render'], 1);
+  step('Smoke HTTP local', ['run', 'smoke']);
+  step('Carga local breve', ['run', 'load:test']);
+  step('Interfaz de navegador', ['run', 'test:ui']);
+  step('Revisión local de secretos', ['run', 'security:check']);
+  const audit = spawnSync(process.execPath, [npmCli, 'audit', '--json'], { cwd: root, encoding: 'utf8', windowsHide: true });
+  if (audit.stdout) fs.writeFileSync('evidence/npm-audit.json', audit.stdout);
+  if (audit.status !== 0) throw new Error('La auditoría detectó alertas o falló; consulta evidence/npm-audit.json.');
+  console.log('Validación local terminada. Docker y los servicios remotos conservan su estado real pendiente.');
+});

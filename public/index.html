@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organiza, edita y completa tus tareas en un espacio de trabajo sencillo.">
+  <title>Sistema de Gestión de Tareas | Órbita</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Órbita, inicio"><span class="brand-mark">◉</span> órbita<span class="brand-period">.</span></a>
+    <div class="workspace"><span class="avatar">OM</span><div><strong>Mi espacio de trabajo</strong><span>Organización personal</span></div></div>
+    <span class="nav-label">ESPACIO PERSONAL</span>
+    <nav aria-label="Navegación principal"><a class="nav-active" href="/">▦ <span>Mis tareas</span><span id="nav-count" class="count">0</span></a><a href="/metrics" target="_blank" rel="noopener">◷ <span>Métricas de la aplicación</span></a><a href="/health" target="_blank" rel="noopener">♡ <span>Estado del servicio</span></a></nav>
+    <div class="sidebar-note"><span class="note-icon">✧</span><strong>Un paso a la vez.</strong><p>Las grandes metas empiezan con pequeñas tareas.</p></div>
+    <div class="profile"><span class="avatar small">OM</span><div><strong>Oscar Martínez</strong><span>Proyecto académico · 10B</span></div></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><span>Espacio de trabajo <span class="separator">/</span> <strong>Mis tareas</strong></span><span class="local-label">Sistema de Gestión de Tareas</span></header>
+    <main>
+      <div class="heading-row"><div><p class="eyebrow">DALE ESPACIO A LO IMPORTANTE</p><h1>Tu día, en orden<span>.</span></h1><p class="subtitle">Organiza tus pendientes y haz lugar para lo que sigue.</p></div><button id="new-task" class="button primary"><span aria-hidden="true">＋</span> Nueva tarea</button></div>
+      <section class="stats" aria-label="Resumen de tareas"><article><span class="stat-icon lavender">▦</span><div><span>Total de tareas</span><strong id="total">0</strong></div><span class="stat-detail">En tu espacio</span></article><article><span class="stat-icon amber">◷</span><div><span>Pendientes</span><strong id="pending">0</strong></div><span class="stat-detail">Por completar</span></article><article><span class="stat-icon mint">✓</span><div><span>Completadas</span><strong id="completed">0</strong></div><span class="stat-detail" id="progress-label">0 % del total</span></article></section>
+      <section class="task-panel" aria-labelledby="tasks-title">
+        <div class="panel-title"><h2 id="tasks-title">Mis tareas <span id="list-count">0</span></h2><span class="saved-label">Guardado en este servidor</span></div>
+        <div class="toolbar"><div class="tabs" role="group" aria-label="Filtrar tareas"><button data-filter="all" class="selected" aria-pressed="true">Todas</button><button data-filter="pending" aria-pressed="false">Pendientes</button><button data-filter="completed" aria-pressed="false">Completadas</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar una tarea…" aria-label="Buscar una tarea"></label></div>
+        <div id="loading" class="empty">Cargando tu espacio de trabajo…</div><div id="tasks" class="task-list" aria-live="polite"></div>
+        <div id="empty" class="empty" hidden><div class="empty-art" aria-hidden="true">✓</div><h3 id="empty-title">Todo empieza con una tarea</h3><p id="empty-description">Agrega tu primer pendiente y empieza a avanzar.</p><button id="empty-add" class="button secondary">Crear mi primera tarea</button></div>
+        <footer class="panel-footer"><span id="visible-count">0 tareas</span><span>Pequeños avances, grandes resultados.</span></footer>
+      </section>
+      <div class="storage-note"><span aria-hidden="true">ⓘ</span><p>Este espacio utiliza almacenamiento local del servidor. En Render gratuito, las tareas se pierden al reiniciar, suspender o desplegar el servicio. Usa datos de demostración.</p></div>
+    </main><footer class="page-footer"><span>Órbita · Sistema de Gestión de Tareas</span><span>Manejo de Scripts · 2026</span></footer>
+  </div>
+  <dialog id="task-dialog"><form id="task-form"><div class="dialog-heading"><div><p class="eyebrow">TU PRÓXIMO PASO</p><h2 id="dialog-title">Nueva tarea</h2></div><button type="button" class="icon-button" data-close aria-label="Cerrar">×</button></div><label for="title">Título <span class="required">*</span></label><input id="title" name="title" required minlength="3" maxlength="120" placeholder="¿Qué necesitas hacer?"><label for="description">Descripción <span class="optional">Opcional</span></label><textarea id="description" name="description" maxlength="1000" rows="4" placeholder="Agrega contexto, pasos o detalles…"></textarea><p class="field-hint">Título de 3 a 120 caracteres. Descripción de hasta 1000.</p><p id="form-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button secondary" data-close>Cancelar</button><button id="save-task" class="button primary" type="submit">Crear tarea</button></div></form></dialog>
+  <dialog id="delete-dialog"><form id="delete-form"><h2>¿Eliminar esta tarea?</h2><p id="delete-description"></p><p>Esta acción es permanente.</p><p id="delete-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button secondary" id="cancel-delete">Conservar tarea</button><button class="button danger" type="submit">Eliminar tarea</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
