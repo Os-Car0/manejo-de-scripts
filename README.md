@@ -60,6 +60,8 @@ En Render gratuito el filesystem es efímero: se pierden tareas en reinicios, de
 
 Hardware propuesto para desarrollo: 2 núcleos, 4 GB RAM, 1 GB libre; para Docker, 8 GB RAM y virtualización recomendados. Son recomendaciones del proyecto, no mediciones de consumo ni garantías de Render. Internet se requiere para dependencias y servicios externos. CI utiliza ubuntu-latest y Node 24; el equipo local usa Node 26. Las versiones exactas de bibliotecas se fijan en `package-lock.json`. La imagen base y las acciones usan etiquetas mayores: deben actualizarse y revisarse; no se declara una reproducción binaria idéntica indefinida.
 
+Se corrigió la propiedad de los metadatos Git mediante una copia verificada dentro de este proyecto, conservando los commits y el índice. Git funciona con comandos normales y no se modificó su configuración global. El respaldo previo queda ignorado en tmp; `evidence/git-ownership.json` registra la operación.
+
 ## Scripts
 
 Ejecutar todos mediante `npm.cmd run <comando>` en Windows o `npm run <comando>` en Linux. Salida 0 indica éxito; fallos establecen salida 1 y detienen los pasos dependientes.
@@ -107,6 +109,8 @@ Jest exige 80 % en líneas, funciones, ramas y sentencias para **todos los módu
 `test:ui` usa Playwright con Chrome instalado; en Windows su ruta predeterminada es `C:/Program Files/Google/Chrome/Application/chrome.exe`, configurable mediante CHROME_PATH. Exige una instancia local sin tareas para aislar la evidencia; elimina exclusivamente las tareas creadas por la prueba. La comprobación de un error HTTP de interfaz utiliza una respuesta interceptada declarada en el reporte; el CRUD restante se ejecuta contra la API real. No se descarga un navegador durante npm ci.
 
 Para regenerar la entrega, `scripts/create-academic-document.py` lee las evidencias y crea el Word, informe y matriz con python-docx y Pillow. `scripts/export-document.ps1` actualiza el índice y exporta con Word de Windows. `scripts/verify-documents.py` revisa estructura, formato y PDF, y produce PNG para inspección visual. En esta sesión se utiliza el Python incluido en el runtime de documentos de Codex; estos pasos documentales requieren sus dependencias y no forman parte del despliegue web. El renderizador de LibreOffice se intenta y su limitación de disponibilidad se registra; no se afirma una revisión de imágenes sin abrirlas.
+
+Durante esta entrega, LibreOffice no estaba disponible y Word abrió, actualizó y paginó el editable, pero no finalizó la exportación PDF, incluso por páginas. `scripts/export-pdf-fallback.py` compone el PDF con ReportLab a partir del mismo contenido, tablas y figuras del DOCX, con índice propio. Sus saltos pueden diferir del Word. La revisión visual del PDF es independiente; la fidelidad visual exacta del DOCX queda limitada por ese fallo de conversión. Los registros lo indican expresamente.
 
 ## Pipeline CI/CD
 

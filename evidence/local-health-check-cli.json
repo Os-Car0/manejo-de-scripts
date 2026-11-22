@@ -1,0 +1,15 @@
+﻿{
+    "timestamp":  "2026-11-22T09:00:30.419Z",
+    "status":  "ok",
+    "commit":  "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
+    "attempts":  1,
+    "health":  {
+                   "status":  "ok",
+                   "commit":  "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
+                   "storage":  "ok",
+                   "uptimeSeconds":  2.6689024,
+                   "timestamp":  "2026-11-22T09:00:30.377Z"
+               },
+    "scope":  "Ejecución del comando npm run health:check contra un servidor temporal local; no es un despliegue remoto.",
+    "origin":  "http://127.0.0.1:56293"
+}

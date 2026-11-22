@@ -1,0 +1,10 @@
+﻿{
+    "method":  "Copia verificada de metadatos dentro del proyecto, conservando commits e índice y respaldo original",
+    "timestamp":  "2026-11-22T09:07:22.4782269Z",
+    "ordinaryGitWorks":  true,
+    "backup":  "C:\\dev\\manejo-de-scripts\\tmp\\git-metadata-8b31611a559e48f48a3a23dbb00baf47\\original",
+    "ownerAfter":  "HP-2026\\oscar",
+    "commitPreserved":  "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
+    "globalGitConfigurationChanged":  false,
+    "priorSetAclAttempt":  "Rechazado por permisos de Windows; no se alteró el propietario mediante ACL."
+}

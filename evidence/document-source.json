@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-11-22T09:02:59.483732+00:00",
+  "python": "3.12.14",
+  "sections": 21,
+  "docx": "docs/Manejo-de-Scripts.docx",
+  "sources": [
+    "tests.json",
+    "coverage/coverage-summary.json",
+    "eslint.json",
+    "load-test.json",
+    "browser-check.json",
+    "health-response.json",
+    "metrics-response.json",
+    "artifact.json",
+    "npm-audit.json"
+  ],
+  "note": "DOCX creado con python-docx. Exportar con Word y revisar PDF y PNG antes de entregar."
+}

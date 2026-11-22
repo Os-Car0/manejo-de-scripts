@@ -1,0 +1,216 @@
+{
+  "timestamp": "2026-11-22T09:04:05.534412+00:00",
+  "status": "estructura y render PDF correctos; revisión visual registrada por separado",
+  "docxBytes": 490841,
+  "pdfBytes": 679094,
+  "pages": 28,
+  "tables": 9,
+  "format": {
+    "font": "Arial",
+    "bodyPt": 12,
+    "headingPt": 14,
+    "lineSpacing": 1.5,
+    "marginsCm": 2.54
+  },
+  "editableDocx": true,
+  "pdfMatchesWordExport": false,
+  "docxVisualReview": "Limitada: Word abrió y repaginó el editable, pero no finalizó su exportación PDF. El PDF de ReportLab se inspecciona por separado.",
+  "pageRecords": [
+    {
+      "page": 1,
+      "textCharacters": 512,
+      "image": "evidence\\document-qa\\page-01.png",
+      "bodySha256": "f3ab8bbb0ea5fd847de4f298c3aa5e5b8443e2ba37b55ffddfe1b3fecbccedcc",
+      "identicalBodyInPreviousRender": "page-01"
+    },
+    {
+      "page": 2,
+      "textCharacters": 2374,
+      "image": "evidence\\document-qa\\page-02.png",
+      "bodySha256": "cc1b6c6e6139873ec66372ff38d9695770574322fb37b312a8f316f85242485f",
+      "identicalBodyInPreviousRender": null
+    },
+    {
+      "page": 3,
+      "textCharacters": 2011,
+      "image": "evidence\\document-qa\\page-03.png",
+      "bodySha256": "1d75ef5a3aa6807824c86c173779f289a58120a221a92b0723bbd12bb7607fd7",
+      "identicalBodyInPreviousRender": "page-03"
+    },
+    {
+      "page": 4,
+      "textCharacters": 2028,
+      "image": "evidence\\document-qa\\page-04.png",
+      "bodySha256": "0e90246dac996bc37a8333f0f88f194271c1c02994edf544f84776358e93270f",
+      "identicalBodyInPreviousRender": "page-04"
+    },
+    {
+      "page": 5,
+      "textCharacters": 2106,
+      "image": "evidence\\document-qa\\page-05.png",
+      "bodySha256": "5af9de2e00e8b12611164ee2ff7bbdc1e80d36af37910c129fb5d5c90e84e63a",
+      "identicalBodyInPreviousRender": "page-05"
+    },
+    {
+      "page": 6,
+      "textCharacters": 2256,
+      "image": "evidence\\document-qa\\page-06.png",
+      "bodySha256": "88f9f988db67ad31d898d059f815288f13d1f2472ac4571e52d4b8b32fb556e5",
+      "identicalBodyInPreviousRender": "page-06"
+    },
+    {
+      "page": 7,
+      "textCharacters": 1964,
+      "image": "evidence\\document-qa\\page-07.png",
+      "bodySha256": "9683255f3c5346f9600a3539398940abe730681ebae3a68a8c66ae4c1d690795",
+      "identicalBodyInPreviousRender": "page-07"
+    },
+    {
+      "page": 8,
+      "textCharacters": 2190,
+      "image": "evidence\\document-qa\\page-08.png",
+      "bodySha256": "050f418b7c3108497a1c97bee9138dce472ca3b9dcf192127b3c82d76995ee8e",
+      "identicalBodyInPreviousRender": "page-08"
+    },
+    {
+      "page": 9,
+      "textCharacters": 2264,
+      "image": "evidence\\document-qa\\page-09.png",
+      "bodySha256": "c98443687e8b4363d25bbedaa0607193a87d373b9e7c4285d4fc4d04bea5ac9e",
+      "identicalBodyInPreviousRender": "page-09"
+    },
+    {
+      "page": 10,
+      "textCharacters": 1629,
+      "image": "evidence\\document-qa\\page-10.png",
+      "bodySha256": "de74e122d03f4855ef444e9a581bd607cd9c1d7c76505486ccb68cc56a3af861",
+      "identicalBodyInPreviousRender": "page-10"
+    },
+    {
+      "page": 11,
+      "textCharacters": 2139,
+      "image": "evidence\\document-qa\\page-11.png",
+      "bodySha256": "1fdc7fa657ec0eed5d49c57a55b407b54d4ca22baec9edc5edeb84575fc56004",
+      "identicalBodyInPreviousRender": "page-11"
+    },
+    {
+      "page": 12,
+      "textCharacters": 1638,
+      "image": "evidence\\document-qa\\page-12.png",
+      "bodySha256": "b06c443da1a6ca4dfbafd048a958b1d4651d79c63f01bc16e1fc05c9e678d6af",
+      "identicalBodyInPreviousRender": "page-12"
+    },
+    {
+      "page": 13,
+      "textCharacters": 2477,
+      "image": "evidence\\document-qa\\page-13.png",
+      "bodySha256": "efeae1e883ab8c15f65effdff72dfb03525b59be1a79725cd2cb51bcf04d5b14",
+      "identicalBodyInPreviousRender": "page-13"
+    },
+    {
+      "page": 14,
+      "textCharacters": 1347,
+      "image": "evidence\\document-qa\\page-14.png",
+      "bodySha256": "ba397934c3a4b4b7970788777b4e4d28dc98a2499af2db071aea72748e7b49ad",
+      "identicalBodyInPreviousRender": "page-14"
+    },
+    {
+      "page": 15,
+      "textCharacters": 2061,
+      "image": "evidence\\document-qa\\page-15.png",
+      "bodySha256": "c62b39e946fabd2b1325c91f7114cefb88568886a73020b00c1df3445d9c7f6e",
+      "identicalBodyInPreviousRender": "page-15"
+    },
+    {
+      "page": 16,
+      "textCharacters": 2087,
+      "image": "evidence\\document-qa\\page-16.png",
+      "bodySha256": "10314b94954d25958db30a516ad943ab1ca91162737157568691026698de3eda",
+      "identicalBodyInPreviousRender": "page-16"
+    },
+    {
+      "page": 17,
+      "textCharacters": 2232,
+      "image": "evidence\\document-qa\\page-17.png",
+      "bodySha256": "19e877e9834e0b4ae8b14e68b78e71f66122b6afed1f18d08cdaf85dda2a65ba",
+      "identicalBodyInPreviousRender": "page-17"
+    },
+    {
+      "page": 18,
+      "textCharacters": 2368,
+      "image": "evidence\\document-qa\\page-18.png",
+      "bodySha256": "d98aadb3d60a4aa84f8e8ab500d529d20cbb8cfb98407ef608c7791aeca03576",
+      "identicalBodyInPreviousRender": null
+    },
+    {
+      "page": 19,
+      "textCharacters": 461,
+      "image": "evidence\\document-qa\\page-19.png",
+      "bodySha256": "9802f0e070e6644be7f9caf52def5641b41e0c9881e5558c9f54250e026b15e9",
+      "identicalBodyInPreviousRender": "page-20"
+    },
+    {
+      "page": 20,
+      "textCharacters": 1534,
+      "image": "evidence\\document-qa\\page-20.png",
+      "bodySha256": "1b4c21be8531b48803af1ae0c4c5dc346835e08484e868a18744505abd56673b",
+      "identicalBodyInPreviousRender": "page-21"
+    },
+    {
+      "page": 21,
+      "textCharacters": 424,
+      "image": "evidence\\document-qa\\page-21.png",
+      "bodySha256": "a36759223180a6f1035cc595bdb5bef93731438597f6f6ce82d539873ff84282",
+      "identicalBodyInPreviousRender": "page-22"
+    },
+    {
+      "page": 22,
+      "textCharacters": 461,
+      "image": "evidence\\document-qa\\page-22.png",
+      "bodySha256": "ee329fb306b694a07ec3a37ef6325e4e9785f24ce740163aea21b6c51e4f6bd3",
+      "identicalBodyInPreviousRender": "page-23"
+    },
+    {
+      "page": 23,
+      "textCharacters": 419,
+      "image": "evidence\\document-qa\\page-23.png",
+      "bodySha256": "11a4abdaa3e6da990eaaef173c4e796e3923b9774ca451387d3a65b12f566701",
+      "identicalBodyInPreviousRender": "page-24"
+    },
+    {
+      "page": 24,
+      "textCharacters": 1649,
+      "image": "evidence\\document-qa\\page-24.png",
+      "bodySha256": "0d14a83b38e83975e706e3c2961fa4c16e3f4460a46e2a2bf6d42718780241bb",
+      "identicalBodyInPreviousRender": "page-25"
+    },
+    {
+      "page": 25,
+      "textCharacters": 2119,
+      "image": "evidence\\document-qa\\page-25.png",
+      "bodySha256": "eb7351d6e11f44dc5e0522082c4b4486fe34da5f814d95e6ee2d023b5d1e4092",
+      "identicalBodyInPreviousRender": "page-26"
+    },
+    {
+      "page": 26,
+      "textCharacters": 1347,
+      "image": "evidence\\document-qa\\page-26.png",
+      "bodySha256": "3f44f75320974188a404588a92c0e881052a73f5729d013d447a4a370b2189cb",
+      "identicalBodyInPreviousRender": "page-27"
+    },
+    {
+      "page": 27,
+      "textCharacters": 2269,
+      "image": "evidence\\document-qa\\page-27.png",
+      "bodySha256": "0caee54bcfe60fb0c0f6d02fe3ce42ae8cec8f12515876c4d149021d29ff6793",
+      "identicalBodyInPreviousRender": "page-28"
+    },
+    {
+      "page": 28,
+      "textCharacters": 1780,
+      "image": "evidence\\document-qa\\page-28.png",
+      "bodySha256": "04d86ae83a242e0349f138a76e2bac50606d848d2957548e43405eea0168d1d5",
+      "identicalBodyInPreviousRender": "page-29"
+    }
+  ]
+}

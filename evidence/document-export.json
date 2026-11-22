@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-11-22T09:03:35.567612+00:00",
+  "converter": "ReportLab con contenido y figuras del DOCX",
+  "pages": 28,
+  "images": 4,
+  "tocUpdated": true,
+  "limitation": "Word abrió, actualizó índice y repaginó el DOCX, pero la exportación PDF de Word no finalizó. El PDF se compuso desde el mismo contenido; sus saltos y páginas pueden diferir del editable.",
+  "docx": "docs/Manejo-de-Scripts.docx",
+  "pdf": "docs/Manejo-de-Scripts.pdf"
+}

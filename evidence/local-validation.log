@@ -1,4 +1,4 @@
-Validación local iniciada: 2026-11-22T08:30:56.063Z
+Validación local iniciada: 2026-11-22T08:35:05.966Z
 
 ### Disponibilidad de herramientas
 
@@ -6,14 +6,14 @@ Validación local iniciada: 2026-11-22T08:30:56.063Z
 > node scripts/capture-environment.js
 
 {
-  "timestamp": "2026-11-22T08:30:56.811Z",
+  "timestamp": "2026-11-22T08:35:06.941Z",
   "node": "v26.13.0",
   "npm": "11.20.0",
   "git": "git version 2.55.0.windows.3",
   "docker": "NO DISPONIBLE",
   "platform": "win32",
   "architecture": "x64",
-  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "commit": "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
   "shellNote": "PowerShell bloquea npm.ps1 en este equipo; se utiliza npm.cmd sin cambiar políticas.",
   "runnerNote": "El ejecutor restringido tuvo setup refresh had errors; validaciones continuadas con autorizaciones de ejecución del entorno."
 }
@@ -68,7 +68,7 @@ Pruebas y cobertura verificadas; umbrales mínimos 80 % en las cuatro dimensione
 Test Suites: 3 passed, 3 total
 Tests:       35 passed, 35 total
 Snapshots:   0 total
-Time:        2.553 s, estimated 4 s
+Time:        2.678 s, estimated 3 s
 Ran all test suites.
 Test results written to: evidence\tests.json
 
@@ -122,7 +122,7 @@ Salida: 0
 > manejo-de-scripts@1.0.0 release:artifact
 > node scripts/create-artifact.js
 
-Artefacto generado: dist/manejo-de-scripts-bc738d5b80994a2ac98b6db36f83b8a14953df4e.tar.gz; SHA-256 646355cf8ef8bc4937a5b222c9549c7cd5e7766b309763c2e9e1abb73e0441c6
+Artefacto generado: dist/manejo-de-scripts-3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70.tar.gz; SHA-256 787b5ee19c04bb438870e9f4fe7380378651cbe721418c6eb081c8956df15479
 
 Salida: 0
 
@@ -177,7 +177,7 @@ Salida: 0
 > node scripts/load-test.js
 
 {
-  "timestamp": "2026-11-22T08:31:11.257Z",
+  "timestamp": "2026-11-22T08:35:22.944Z",
   "scope": "Ensayo local breve; no demuestra disponibilidad mensual ni rendimiento de Render.",
   "origin": "http://localhost:3000",
   "node": "v26.13.0",
@@ -190,9 +190,9 @@ Salida: 0
   "statuses": {
     "200": 200
   },
-  "p95Ms": 7.100099999999998,
-  "elapsedMs": 170.89030000000002,
-  "requestsPerSecond": 1170.3414412637812,
+  "p95Ms": 17.578300000000013,
+  "elapsedMs": 350.35249999999996,
+  "requestsPerSecond": 570.8536402623073,
   "http5xxPercentage": 0,
   "objectivesMetInThisSample": true
 }
@@ -213,6 +213,6 @@ Salida: 0
 > manejo-de-scripts@1.0.0 security:check
 > node scripts/check-secrets.js
 
-Revisión de 55 archivos de texto: sin coincidencias de los patrones de credenciales.
+Revisión de 57 archivos de texto: sin coincidencias de los patrones de credenciales.
 
 Salida: 0

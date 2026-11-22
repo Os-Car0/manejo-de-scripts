@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-11-22T09:11:02.291602+00:00",
+  "localChecksPassed": true,
+  "testsPassed": 35,
+  "coverage": {
+    "lines": 98.07,
+    "functions": 92.5,
+    "branches": 97.31,
+    "statements": 96.03
+  },
+  "branch": "main",
+  "remoteCount": 0,
+  "docker": "PENDIENTE",
+  "githubActionsRun": "PENDIENTE",
+  "renderDeployment": "PENDIENTE",
+  "pdf": "CUMPLE",
+  "docxVisualFidelity": "PARCIAL",
+  "productionReleaseAccepted": false,
+  "publicUrl": null
+}

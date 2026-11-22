@@ -1,8 +1,9 @@
 {
-  "timestamp": "2026-11-22T08:31:06.946Z",
-  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
-  "artifact": "dist/manejo-de-scripts-bc738d5b80994a2ac98b6db36f83b8a14953df4e.tar.gz",
-  "sha256": "646355cf8ef8bc4937a5b222c9549c7cd5e7766b309763c2e9e1abb73e0441c6",
+  "timestamp": "2026-11-22T08:35:18.235Z",
+  "commit": "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
+  "sourceClean": true,
+  "artifact": "dist/manejo-de-scripts-3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70.tar.gz",
+  "sha256": "787b5ee19c04bb438870e9f4fe7380378651cbe721418c6eb081c8956df15479",
   "files": [
     "src",
     "public",

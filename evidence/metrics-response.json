@@ -1,43 +1,44 @@
 {
-  "timestamp": "2026-11-22T08:31:10.515Z",
+  "timestamp": "2026-11-22T08:35:21.727Z",
   "commit": "local",
   "scope": "Proceso actual; contadores desde el inicio; p95 sobre las últimas 1000 respuestas finalizadas.",
   "requests": {
-    "total": 8,
+    "total": 253,
     "byStatus": {
-      "200": 4,
-      "201": 1,
-      "204": 1,
-      "400": 1,
-      "404": 1
+      "200": 233,
+      "201": 5,
+      "204": 5,
+      "304": 5,
+      "400": 2,
+      "404": 3
     }
   },
   "responseTimeMs": {
-    "average": 6.84365,
-    "p95": 27.5017,
-    "sampleSize": 8
+    "average": 1.1135039525691703,
+    "p95": 3.5411,
+    "sampleSize": 253
   },
   "errors": {
-    "http4xx": 2,
+    "http4xx": 5,
     "http5xx": 0,
-    "total": 2,
-    "percentage": 25,
+    "total": 5,
+    "percentage": 1.9762845849802373,
     "serverPercentage": 0
   },
   "api": {
-    "requests": 5,
+    "requests": 238,
     "http5xx": 0,
     "serverErrorPercentage": 0,
-    "p95Ms": 27.5017,
-    "sampleSize": 5
+    "p95Ms": 3.2814,
+    "sampleSize": 238
   },
-  "uptimeSeconds": 617.7905764,
+  "uptimeSeconds": 869.0054542,
   "health": "ok",
   "memoryBytes": {
-    "rss": 44658688,
-    "heapTotal": 11145216,
-    "heapUsed": 9061200,
-    "external": 2878356,
-    "arrayBuffers": 146319
+    "rss": 41402368,
+    "heapTotal": 11407360,
+    "heapUsed": 10676016,
+    "external": 3082484,
+    "arrayBuffers": 146675
   }
 }

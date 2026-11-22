@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-11-22T09:11:02.291602+00:00",
+  "origin": "http://localhost:3000",
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "bytes": 5847
+    },
+    {
+      "route": "/health",
+      "status": 200,
+      "bytes": 115
+    },
+    {
+      "route": "/metrics",
+      "status": 200,
+      "bytes": 676
+    },
+    {
+      "route": "/api/tasks",
+      "status": 200,
+      "bytes": 11
+    }
+  ],
+  "scope": "Servidor local real; se detendrá después de terminar la revisión."
+}

@@ -1,0 +1,218 @@
+Validación local iniciada: 2026-11-22T08:30:56.063Z
+
+### Disponibilidad de herramientas
+
+> manejo-de-scripts@1.0.0 evidence:environment
+> node scripts/capture-environment.js
+
+{
+  "timestamp": "2026-11-22T08:30:56.811Z",
+  "node": "v26.13.0",
+  "npm": "11.20.0",
+  "git": "git version 2.55.0.windows.3",
+  "docker": "NO DISPONIBLE",
+  "platform": "win32",
+  "architecture": "x64",
+  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "shellNote": "PowerShell bloquea npm.ps1 en este equipo; se utiliza npm.cmd sin cambiar políticas.",
+  "runnerNote": "El ejecutor restringido tuvo setup refresh had errors; validaciones continuadas con autorizaciones de ejecución del entorno."
+}
+
+Salida: 0
+
+### Preparación
+
+> manejo-de-scripts@1.0.0 release:prepare
+> node scripts/prepare-release.js
+
+Entorno de liberación preparado. No se alteraron los datos de la aplicación.
+
+Salida: 0
+
+### Configuración
+
+> manejo-de-scripts@1.0.0 config:validate
+> node --env-file-if-exists=.env scripts/validate-env.js
+
+Configuración válida: NODE_ENV=development, PORT=3000, versión=local. Valores secretos omitidos.
+.env not found. Continuing without it.
+
+Salida: 0
+
+### ESLint
+
+> manejo-de-scripts@1.0.0 lint
+> eslint . --format json --output-file evidence/eslint.json
+
+
+Salida: 0
+
+### Pruebas y cobertura
+
+> manejo-de-scripts@1.0.0 test:release
+> node scripts/test-release.js
+
+[ejecutar] node.exe C:\dev\manejo-de-scripts\node_modules\jest\bin\jest.js --runInBand --coverage --json --outputFile=evidence/tests.json
+------------|---------|----------|---------|---------|-------------------
+File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------|---------|----------|---------|---------|-------------------
+All files   |   96.03 |    97.31 |    92.5 |   98.07 |                   
+ app.js     |     100 |    98.43 |     100 |     100 | 17                
+ config.js  |     100 |    96.55 |     100 |     100 | 3                 
+ metrics.js |     100 |      100 |     100 |     100 |                   
+ server.js  |    61.9 |    33.33 |      40 |      80 | 10-11,18          
+ store.js   |     100 |      100 |     100 |     100 |                   
+------------|---------|----------|---------|---------|-------------------
+Pruebas y cobertura verificadas; umbrales mínimos 80 % en las cuatro dimensiones.
+
+Test Suites: 3 passed, 3 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        2.553 s, estimated 4 s
+Ran all test suites.
+Test results written to: evidence\tests.json
+
+Salida: 0
+
+### Construcción
+
+> manejo-de-scripts@1.0.0 build
+> node scripts/build.js
+
+[ejecutar] node.exe --check src\app.js
+[ejecutar] node.exe --check src\config.js
+[ejecutar] node.exe --check src\metrics.js
+[ejecutar] node.exe --check src\server.js
+[ejecutar] node.exe --check src\store.js
+[ejecutar] node.exe --check public\app.js
+[ejecutar] node.exe --check scripts\browser-check.js
+[ejecutar] node.exe --check scripts\build-docker.js
+[ejecutar] node.exe --check scripts\build.js
+[ejecutar] node.exe --check scripts\capture-environment.js
+[ejecutar] node.exe --check scripts\check-secrets.js
+[ejecutar] node.exe --check scripts\create-artifact.js
+[ejecutar] node.exe --check scripts\deploy.js
+[ejecutar] node.exe --check scripts\deployment.js
+[ejecutar] node.exe --check scripts\health-check.js
+[ejecutar] node.exe --check scripts\install-deps.js
+[ejecutar] node.exe --check scripts\lib.js
+[ejecutar] node.exe --check scripts\load-test.js
+[ejecutar] node.exe --check scripts\prepare-release.js
+[ejecutar] node.exe --check scripts\smoke.js
+[ejecutar] node.exe --check scripts\test-release.js
+[ejecutar] node.exe --check scripts\validate-env.js
+[ejecutar] node.exe --check scripts\validate-local.js
+[ejecutar] node.exe --check scripts\validate-yaml.js
+[ejecutar] node.exe --check scripts\verify-version-local.js
+Construcción validada: 25 archivos JavaScript y recursos estáticos.
+
+Salida: 0
+
+### YAML
+
+> manejo-de-scripts@1.0.0 yaml:validate
+> node scripts/validate-yaml.js
+
+Archivos YAML válidos; controles básicos de despliegue verificados.
+
+Salida: 0
+
+### Artefacto
+
+> manejo-de-scripts@1.0.0 release:artifact
+> node scripts/create-artifact.js
+
+Artefacto generado: dist/manejo-de-scripts-bc738d5b80994a2ac98b6db36f83b8a14953df4e.tar.gz; SHA-256 646355cf8ef8bc4937a5b222c9549c7cd5e7766b309763c2e9e1abb73e0441c6
+
+Salida: 0
+
+### Plan de despliegue sin ejecución
+
+> manejo-de-scripts@1.0.0 deploy:plan
+> node scripts/deploy.js --plan
+
+Plan generado en evidence/deployment-plan.json. No se contactó a Render.
+
+Salida: 0
+
+### Construcción Docker o limitación explícita
+
+> manejo-de-scripts@1.0.0 docker:build
+> node scripts/build-docker.js
+
+[ERROR] Docker no está disponible. Instala/inicia Docker Engine para construir la imagen.
+
+Salida: 1
+
+### Despliegue fuera de Actions: rechazo esperado
+
+> manejo-de-scripts@1.0.0 deploy:render
+> node scripts/deploy.js --execute
+
+[ERROR] El despliegue solo se ejecuta en GitHub Actions mediante push a main, después del job de validación.
+
+Salida: 1
+
+### Health check real de commit local
+
+> manejo-de-scripts@1.0.0 test:health-local
+> node scripts/verify-version-local.js
+
+Health check real correcto y commit distinto rechazado.
+
+Salida: 0
+
+### Smoke HTTP local
+
+> manejo-de-scripts@1.0.0 smoke
+> node scripts/smoke.js
+
+Smoke local correcto: CRUD, validación, errores, salud y métricas reales.
+
+Salida: 0
+
+### Carga local breve
+
+> manejo-de-scripts@1.0.0 load:test
+> node scripts/load-test.js
+
+{
+  "timestamp": "2026-11-22T08:31:11.257Z",
+  "scope": "Ensayo local breve; no demuestra disponibilidad mensual ni rendimiento de Render.",
+  "origin": "http://localhost:3000",
+  "node": "v26.13.0",
+  "platform": "win32",
+  "concurrency": 5,
+  "warmupRequests": 10,
+  "measuredRequests": 200,
+  "completed": 200,
+  "networkFailures": 0,
+  "statuses": {
+    "200": 200
+  },
+  "p95Ms": 7.100099999999998,
+  "elapsedMs": 170.89030000000002,
+  "requestsPerSecond": 1170.3414412637812,
+  "http5xxPercentage": 0,
+  "objectivesMetInThisSample": true
+}
+
+Salida: 0
+
+### Interfaz de navegador
+
+> manejo-de-scripts@1.0.0 test:ui
+> node scripts/browser-check.js
+
+Interfaz verificada: 9 comprobaciones; capturas reales guardadas.
+
+Salida: 0
+
+### Revisión local de secretos
+
+> manejo-de-scripts@1.0.0 security:check
+> node scripts/check-secrets.js
+
+Revisión de 55 archivos de texto: sin coincidencias de los patrones de credenciales.
+
+Salida: 0

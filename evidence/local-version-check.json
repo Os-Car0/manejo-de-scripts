@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-22T08:31:09.647Z",
+  "timestamp": "2026-11-22T08:35:21.007Z",
   "status": "ok",
-  "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+  "commit": "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
   "attempts": 4,
   "health": {
     "status": "ok",
-    "commit": "bc738d5b80994a2ac98b6db36f83b8a14953df4e",
+    "commit": "3d57a798eb3b5dbf06201cbe483ffc2f93ce2b70",
     "storage": "ok",
-    "uptimeSeconds": 0.3600137,
-    "timestamp": "2026-11-22T08:31:09.626Z"
+    "uptimeSeconds": 0.3527338,
+    "timestamp": "2026-11-22T08:35:20.990Z"
   },
   "scope": "Servidor temporal real del equipo local; no es un despliegue en Render.",
   "rejectedDifferentCommit": true,

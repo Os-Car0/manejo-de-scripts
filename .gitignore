@@ -10,3 +10,4 @@ tmp/
 !evidence/*.log
 evidence/ui-session.json
 evidence/document-qa/
+~$*

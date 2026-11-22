@@ -1,0 +1,163 @@
+[
+  [
+    "D1",
+    "Justificación del pipeline",
+    "CUMPLE",
+    "README.md; documento §7",
+    "Workflow y explicación de dependencias"
+  ],
+  [
+    "D2",
+    "Entorno de liberación y despliegue",
+    "CUMPLE",
+    "Dockerfile; .env.example; documento §8",
+    "tool-availability.json; release-environment.json"
+  ],
+  [
+    "D3",
+    "Niveles de servicio acordados o propuestos",
+    "CUMPLE",
+    "README.md; documento §9",
+    "load-test.json; metas diferenciadas de resultados"
+  ],
+  [
+    "D4",
+    "Métricas para el monitoreo",
+    "CUMPLE",
+    "src/metrics.js; src/app.js; documento §10",
+    "metrics-response.json; health-response.json; tests.json"
+  ],
+  [
+    "D5",
+    "Parámetros de herramientas",
+    "CUMPLE",
+    "package.json; jest.config.js; eslint.config.js; documento §11",
+    "package-lock.json; yaml-validation.json"
+  ],
+  [
+    "I1",
+    "Herramienta de liberación configurada y vinculada al despliegue",
+    "PARCIAL",
+    ".github/workflows/ci-cd.yml; render.yaml; scripts/deploy.js",
+    "YAML local válido; faltan repositorio y servicio remotos autorizados"
+  ],
+  [
+    "R1",
+    "Scripts del pipeline",
+    "CUMPLE",
+    ".github/workflows/ci-cd.yml; scripts/lib.js",
+    "local-validation.json; pruebas del verificador"
+  ],
+  [
+    "R2",
+    "Scripts del entorno de liberación",
+    "CUMPLE",
+    "scripts/prepare-release.js; install-deps.js; validate-env.js",
+    "release-environment.json; local-validation.log"
+  ],
+  [
+    "R3",
+    "Scripts de pruebas de liberación",
+    "CUMPLE",
+    "scripts/test-release.js; tests/",
+    "tests.json; coverage/; eslint.json"
+  ],
+  [
+    "R4",
+    "Scripts de generación del despliegue",
+    "CUMPLE",
+    "scripts/deploy.js; deployment.js; health-check.js",
+    "deployment-plan.json; pruebas de rechazo de SHA anterior"
+  ],
+  [
+    "A1",
+    "Proyecto independiente y Git main local",
+    "CUMPLE",
+    "C:/dev/manejo-de-scripts; .git/",
+    "git-status.json; commit local en español"
+  ],
+  [
+    "A2",
+    "CRUD, validaciones y mensajes de interfaz",
+    "CUMPLE",
+    "src/app.js; src/store.js; public/",
+    "endpoints.json; browser-check.json; screenshots/"
+  ],
+  [
+    "A3",
+    "Persistencia local y límites documentados",
+    "CUMPLE",
+    "src/store.js; README.md",
+    "Tests de reinicio, corrupción y escritura atómica"
+  ],
+  [
+    "A4",
+    "Pruebas y cuatro coberturas mínimas de 80 %",
+    "CUMPLE",
+    "tests/; jest.config.js",
+    "tests.json; coverage/coverage-summary.json"
+  ],
+  [
+    "A5",
+    "Dependencias reproducibles y análisis estático",
+    "CUMPLE",
+    "package-lock.json; eslint.config.js",
+    "local-validation.log; eslint.json; npm-audit.json"
+  ],
+  [
+    "A6",
+    "Artefacto de liberación trazable",
+    "CUMPLE",
+    "scripts/create-artifact.js; dist/",
+    "artifact.json con commit y SHA-256"
+  ],
+  [
+    "A7",
+    "Construcción y ejecución de imagen Docker local",
+    "PENDIENTE",
+    "Dockerfile; .dockerignore; scripts/build-docker.js",
+    "docker.json: Docker no está instalado"
+  ],
+  [
+    "A8",
+    "Pipeline ejecutado en GitHub Actions",
+    "PENDIENTE",
+    ".github/workflows/ci-cd.yml",
+    "Sin repositorio remoto; validación local solamente"
+  ],
+  [
+    "A9",
+    "Despliegue real en Render y commit verificado",
+    "PENDIENTE",
+    "render.yaml; scripts/deploy.js; health-check.js",
+    "Sin servicio ni URL pública; ejecución remota no autorizada"
+  ],
+  [
+    "A10",
+    "Documento académico Word y PDF",
+    "PARCIAL",
+    "docs/Manejo-de-Scripts.docx; docs/Manejo-de-Scripts.pdf",
+    "Archivos generados; PDF revisado; fidelidad visual exacta de Word limitada por su exportación bloqueada"
+  ],
+  [
+    "A11",
+    "Evidencias reales y matriz de cumplimiento",
+    "CUMPLE",
+    "evidence/; docs/matriz-cumplimiento.md",
+    "Registros de ejecución y capturas locales"
+  ],
+  [
+    "A12",
+    "Medición mensual de disponibilidad y ensayo de recuperación",
+    "PENDIENTE",
+    "Objetivos y protocolo en documento §9",
+    "Sin mes de observación ni incidente remoto ensayado"
+  ],
+  [
+    "A13",
+    "Protección de secretos y despliegue exclusivo de main",
+    "PARCIAL",
+    ".gitignore; workflow; scripts/check-secrets.js",
+    "secret-scan.json; protecciones y Secrets remotos pendientes"
+  ]
+]

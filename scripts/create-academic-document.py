@@ -57,7 +57,7 @@ matrix = [
     ['A7', 'Construcción y ejecución de imagen Docker local', 'PENDIENTE', 'Dockerfile; .dockerignore; scripts/build-docker.js', 'docker.json: Docker no está instalado'],
     ['A8', 'Pipeline ejecutado en GitHub Actions', 'PENDIENTE', '.github/workflows/ci-cd.yml', 'Sin repositorio remoto; validación local solamente'],
     ['A9', 'Despliegue real en Render y commit verificado', 'PENDIENTE', 'render.yaml; scripts/deploy.js; health-check.js', 'Sin servicio ni URL pública; ejecución remota no autorizada'],
-    ['A10', 'Documento académico Word y PDF', 'CUMPLE', 'docs/Manejo-de-Scripts.docx; docs/Manejo-de-Scripts.pdf', 'document-validation.json; revisión de páginas renderizadas'],
+    ['A10', 'Documento académico Word y PDF', 'PARCIAL', 'docs/Manejo-de-Scripts.docx; docs/Manejo-de-Scripts.pdf', 'Archivos generados; PDF revisado; fidelidad visual exacta de Word limitada por su exportación bloqueada'],
     ['A11', 'Evidencias reales y matriz de cumplimiento', 'CUMPLE', 'evidence/; docs/matriz-cumplimiento.md', 'Registros de ejecución y capturas locales'],
     ['A12', 'Medición mensual de disponibilidad y ensayo de recuperación', 'PENDIENTE', 'Objetivos y protocolo en documento §9', 'Sin mes de observación ni incidente remoto ensayado'],
     ['A13', 'Protección de secretos y despliegue exclusivo de main', 'PARCIAL', '.gitignore; workflow; scripts/check-secrets.js', 'secret-scan.json; protecciones y Secrets remotos pendientes'],
@@ -83,7 +83,7 @@ for i, (title, detail) in enumerate(stages):
     y = 30 + i * 255
     draw.rounded_rectangle((25, y, 1375, y + 185), radius=18, fill='#f4f5f9' if i != 3 else '#eeebf8', outline='#aab0c3', width=3)
     draw.text((700, y + 51), title, font=ImageFont.truetype(BOLD, 46), fill='#111111', anchor='mm')
-    draw.text((700, y + 120), detail, font=ImageFont.truetype(FONT, 38), fill='#252638', anchor='mm')
+    draw.text((700, y + 120), detail, font=ImageFont.truetype(FONT, 42), fill='#252638', anchor='mm')
     if i < 5:
         draw.line((700, y + 186, 700, y + 243), fill='#626a82', width=5)
         draw.polygon([(688, y + 229), (712, y + 229), (700, y + 248)], fill='#626a82')
@@ -124,7 +124,8 @@ def p(text, bold=False):
     return para
 
 def heading(text, level=1, new_page=False):
-    if new_page: doc.add_page_break()
+    if new_page and text.startswith(('3 Introducción', '17 Diagrama', '18 Evidencias', '18.1', '18.2', '18.3', '18.4', '21 Referencias')):
+        doc.add_page_break()
     return doc.add_heading(text, level)
 
 def table(headers, rows, widths=None):
@@ -362,17 +363,17 @@ p('deploy.js tiene dos modos explícitos. --plan produce un documento de intenci
 p('El módulo deployment.js valida que el hook use HTTPS y api.render.com, y que el origen de aplicación no incluya contraseñas, rutas ni parámetros. Añade ref con el SHA validado y emite un único POST. Un error de comunicación no desencadena otra solicitud automática, porque el proveedor podría haber recibido la primera. La evidencia local omite la URL secreta. Los códigos 200 y 202 indican solicitud aceptada o en cola, no una aplicación ya publicada (Render, s. f.-c).')
 p('health-check.js permite esperar hasta diez minutos. Cada consulta tiene un timeout individual y evita caché. La liberación solo se confirma cuando el cuerpo informa status ok, storage ok y el commit esperado. Durante la espera puede responder la versión anterior y el script continúa hasta que aparezca la correcta o venza el plazo. Una falla produce salida no cero y se refleja como despliegue no verificado.')
 p('La reversión propuesta consiste en seleccionar un commit previamente validado y repetir el procedimiento de liberación para ese SHA con los controles aprobados. No existe un script que revierta automáticamente datos JSON, porque el servicio gratuito no conserva versiones del archivo. La recuperación de código y la recuperación de datos se documentan como problemas distintos y deben ensayarse antes de prometer un RTO contractual.')
-p('No hay hooks, dominios ni claves reales en esta entrega. Las pruebas emplean example.invalid como dominio reservado y un hook deliberadamente no operativo para validar formato. La existencia de esas fixtures no representa una conexión con Render. La generación local del plan y el rechazo de ejecución fuera de Actions son las evidencias disponibles hasta contar con autorización remota.')
+p('El dominio example.invalid y el hook de las pruebas son fixtures no operativas. No existen credenciales ni URL pública reales.')
 
 heading('17 Diagrama del pipeline CI/CD', new_page=True)
 p('El diagrama agrupa las etapas ejecutadas por validate y la condición que habilita deploy. En un PR el recorrido termina al conservar las evidencias de validación; únicamente un push a main con despliegue habilitado puede continuar hacia Render. Cada bloque depende del éxito de los anteriores.')
-figure(DOCS / 'pipeline.png', 6.2, 'Figura 1. Pipeline implementado en .github/workflows/ci-cd.yml. Elaboración propia a partir de la configuración del proyecto.')
+figure(DOCS / 'pipeline.png', 5.7, 'Figura 1. Pipeline implementado en .github/workflows/ci-cd.yml. Elaboración propia a partir de la configuración del proyecto.')
 
 heading('18 Evidencias de implementación y pruebas', new_page=True)
 p('Las evidencias se obtuvieron ejecutando el proyecto local. Los archivos JSON y el log permiten contrastar las afirmaciones del informe; las capturas corresponden al Chrome local, no a una maqueta ni a un servicio público. Su fecha de registro está dentro de cada reporte. Los resultados de pruebas del verificador utilizan datos controlados y se identifican como pruebas, no como hechos de despliegue.')
 table(['Evidencia', 'Resultado observado'], [
     ['tests.json', f"{tests['numPassedTests']}/{tests['numTotalTests']} pruebas; {tests['numPassedTestSuites']} suites aprobadas."],
-    ['coverage/coverage-summary.json', f"Líneas {coverage['lines']['pct']:.2f} %; funciones {coverage['functions']['pct']:.2f} %; ramas {coverage['branches']['pct']:.2f} %; sentencias {coverage['statements']['pct']:.2f} %."],
+    ['coverage/\ncoverage-summary.json', f"Líneas {coverage['lines']['pct']:.2f} %; funciones {coverage['functions']['pct']:.2f} %; ramas {coverage['branches']['pct']:.2f} %; sentencias {coverage['statements']['pct']:.2f} %."],
     ['eslint.json', f'{lint_errors} errores y {lint_warnings} advertencias.'],
     ['build.json', f"Sintaxis válida en {build['checkedJavaScriptFiles']} archivos JS y recursos estáticos comprobados."],
     ['npm-audit.json', f"{audit['metadata']['vulnerabilities']['total']} vulnerabilidades informadas por npm audit."],
@@ -408,6 +409,7 @@ p(f"ESLint terminó con {lint_errors} errores y {lint_warnings} advertencias. La
 p(f"El ensayo de carga completó {load['completed']} de {load['measuredRequests']} solicitudes medidas, con concurrencia {load['concurrency']}, p95 de {load['p95Ms']:.3f} ms, {load['http5xxPercentage']:.2f} % de respuestas 5xx y {load['networkFailures']} fallos de red. La duración de la muestra fue {load['elapsedMs']:.2f} ms y la tasa observada {load['requestsPerSecond']:.2f} solicitudes por segundo. Fue una prueba local breve sobre la lista vacía tras el smoke; no demuestra la meta bajo 1000 tareas ni la ventana propuesta de diez minutos.")
 p('Los fallos de entorno se identificaron sin eliminar requisitos. npm.ps1 estaba bloqueado por la política de PowerShell y se utilizó npm.cmd. El ejecutor restringido falló al crear procesos y el acceso integrado al navegador tampoco pudo iniciarse; las ejecuciones se continuaron con los permisos del entorno y la interfaz se verificó con Playwright y Chrome local. Git detectó diferente propietario al cambiar de ejecutor y se aplicó safe.directory exclusivamente al comando y a la ruta del proyecto, sin cambiar ajustes globales.')
 p('La construcción Docker quedó pendiente porque no existe Docker Engine. El pipeline tiene configuración local válida y scripts ejercitados, pero no cuenta con una ejecución remota. La vinculación Actions–Render permanece parcial y el despliegue público pendiente. Tampoco se ha medido un mes completo de disponibilidad ni se ha ensayado recuperación remota; esas metas no pueden darse por satisfechas con pruebas funcionales.')
+p('El documento editable se generó con python-docx. Word abrió el archivo, actualizó su índice y lo paginó, pero no completó la conversión a PDF, ni siquiera al probar una página. LibreOffice tampoco estaba disponible. Por ello el PDF se compuso con ReportLab desde el mismo contenido, tablas y figuras, con índice propio. Sus saltos pueden diferir del editable. La revisión visual del PDF se registra por separado y la fidelidad exacta de las páginas de Word permanece limitada por esa incidencia del entorno.')
 heading('19.1 Matriz de requisitos originales', level=2)
 p('Se evalúan individualmente los diez requisitos de la profesora. CUMPLE se refiere al entregable documental o de código verificado localmente; PARCIAL señala que la vinculación solicitada aún no se puede demostrar. La matriz ampliada incluye además Docker, despliegue, documentos y objetivos operativos en docs/matriz-cumplimiento.md.')
 table(['ID y requisito', 'Estado', 'Archivo o evidencia principal'], [[f'{r[0]} {r[1]}', r[2], r[3] + '. ' + r[4]] for r in matrix[:10]], [2.25, 1.0, 3.25])
@@ -440,7 +442,7 @@ for reference in references:
     para.paragraph_format.left_indent = Inches(.5)
     para.paragraph_format.first_line_indent = Inches(-.5)
     # APA 7: título de obra o página en cursiva.
-    title = reference.split('). ', 1)[1].split('. ', 1)[0]
+    title = 'Site reliability engineering: How Google runs production systems' if reference.startswith('Beyer,') else reference.split('). ', 1)[1].split('. ', 1)[0]
     prefix, _, suffix = reference.partition(title)
     para.clear(); para.add_run(prefix); para.add_run(title).italic = True; para.add_run(suffix)
 
@@ -450,7 +452,7 @@ for name in ['TOC 1', 'TOC 2']:
     except KeyError: style = doc.styles.add_style(name, 1)
     style.font.name = 'Arial'; style.font.size = Pt(12)
     style.paragraph_format.line_spacing = 1.5
-    style.paragraph_format.space_after = Pt(4)
+    style.paragraph_format.space_after = Pt(0)
 doc.save(DOCS / 'Manejo-de-Scripts.docx')
 
 informe = f'''# Informe final de implementación local
@@ -486,6 +488,8 @@ package*.json           Comandos, dependencias y lockfile
 URL local comprobada: http://localhost:3000. Arranque: `npm.cmd start`. El servidor de verificación puede detenerse al terminar la revisión; ejecutar el comando para abrirlo de nuevo.
 
 Documentos: `docs/Manejo-de-Scripts.docx` y `docs/Manejo-de-Scripts.pdf`. Evidencias: `evidence/`. Matriz individual de los requisitos originales y adicionales: `docs/matriz-cumplimiento.md` y `.json`.
+
+Word abre, actualiza el índice y pagina el editable, pero su exportación PDF se bloquea; LibreOffice tampoco está disponible. El PDF se genera con ReportLab desde el mismo contenido y figuras, con índice propio. Su paginación puede diferir. Se revisa el PDF por separado; la fidelidad visual exacta de Word queda como limitación (A10 PARCIAL en la matriz).
 
 ## Funcionalidades y tecnologías
 

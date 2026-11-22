@@ -1,0 +1,8 @@
+﻿{
+    "processId":  22740,
+    "restart":  "npm.cmd start",
+    "timestamp":  "2026-11-22T09:13:27.2502820Z",
+    "testsPreviouslyPassed":  true,
+    "state":  "Servidor propio detenido después de las verificaciones locales",
+    "url":  "http://localhost:3000"
+}

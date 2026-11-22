@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T08:31:11.257Z",
+  "timestamp": "2026-11-22T08:35:22.944Z",
   "scope": "Ensayo local breve; no demuestra disponibilidad mensual ni rendimiento de Render.",
   "origin": "http://localhost:3000",
   "node": "v26.13.0",
@@ -12,9 +12,9 @@
   "statuses": {
     "200": 200
   },
-  "p95Ms": 7.100099999999998,
-  "elapsedMs": 170.89030000000002,
-  "requestsPerSecond": 1170.3414412637812,
+  "p95Ms": 17.578300000000013,
+  "elapsedMs": 350.35249999999996,
+  "requestsPerSecond": 570.8536402623073,
   "http5xxPercentage": 0,
   "objectivesMetInThisSample": true
 }

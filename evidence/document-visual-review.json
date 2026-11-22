@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-22T09:11:02.291602+00:00",
+  "pdfPagesReviewed": 28,
+  "pdfStatus": "CUMPLE",
+  "review": "Inspección de páginas mostradas al asistente; comparación exacta de cuerpos renderizados para páginas sin cambios; verificación de las páginas nuevas y de numeración.",
+  "checked": [
+    "Texto legible",
+    "Márgenes",
+    "Numeración",
+    "Tablas sin recortes",
+    "Diagrama",
+    "Capturas reales",
+    "Índice",
+    "Referencias",
+    "Ausencia de páginas vacías"
+  ],
+  "docxStatus": "PARCIAL",
+  "docxLimit": "Word abrió, actualizó y paginó el editable, pero no completó la exportación PDF. La fidelidad visual exacta del DOCX requiere revisión directa; el PDF se compuso con ReportLab."
+}
